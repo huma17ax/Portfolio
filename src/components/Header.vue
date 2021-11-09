@@ -1,8 +1,8 @@
 <template>
   <div class='header'>
     <span class='title range' v-on:click="backTitle">Logo</span>
-    <span class='Am range' v-on:click="goPage('/AboutMe')">
-        About me
+    <span class='Am range' v-on:click="goPage('/About')">
+        About
     </span>
     <span class='Ac range' v-on:click="goPage('/Activity')">
         Activity

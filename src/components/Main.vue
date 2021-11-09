@@ -4,7 +4,7 @@
         <div class="button-container">
             <myButton
             class="button-item"
-            v-on:click.native="goPage('/AboutMe')">About me</myButton>
+            v-on:click.native="goPage('/About')">About</myButton>
             <myButton
             class="button-item"
             v-on:click.native="goPage('/Activity')">Activity</myButton>
