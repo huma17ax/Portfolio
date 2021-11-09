@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import myButton from '@/components/Button'
+import myButton from '@/components/parts/Button'
 
 export default {
   name: 'toppage',
