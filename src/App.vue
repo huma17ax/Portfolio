@@ -1,19 +1,16 @@
 <template>
   <div id='app'>
-    <MyHeader class='header'></MyHeader>
-    <div class='view'>
-        <router-view></router-view>
-    </div>
+    <Wrapper></Wrapper>
   </div>
 </template>
 
 <script>
-import MyHeader from './components/Header.vue'
+import Wrapper from './components/ViewWrapper.vue'
 
 export default {
   name: 'app',
   components: {
-    MyHeader
+    Wrapper
   },
   data: function () {
     return {
@@ -22,20 +19,19 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 }
+</style>
 
-.header {
-  height: 70px;
-}
-
-.view {
-  height: calc(100% - 70px);
+<style lang="scss">
+body{
+  margin: 0;
 }
 </style>
