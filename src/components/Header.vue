@@ -7,8 +7,8 @@
     <span class='Ac range' v-on:click="goPage('/Activity')">
         Activity
     </span>
-    <span class='Pd range' v-on:click="goPage('/Product')">
-        Product
+    <span class='Pd range' v-on:click="goPage('/Works')">
+        Works
     </span>
     <span class='Ct range' v-on:click="goPage('/Contact')">
         Contact
