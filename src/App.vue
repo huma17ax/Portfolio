@@ -21,7 +21,8 @@ export default {
 
 <style lang='scss' scoped>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Hiragino Sans", "Yu Gothic", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -33,5 +34,16 @@ export default {
 <style lang="scss">
 body{
   margin: 0;
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px $sub-color;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $main-color;
+    border-radius: 4px;
 }
 </style>
