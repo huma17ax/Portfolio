@@ -35,7 +35,7 @@ export default {
   .horizon {
     display: flex;
     align-items: center;
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bolder;
     margin: 16px 0px;
     &::after {
@@ -58,7 +58,7 @@ export default {
     cursor: pointer;
     background-color: white;
     border: none;
-    border-radius: 8px;
+    // border-radius: 8px;
     transition: all 0.2s;
     &::after {
       position: absolute;

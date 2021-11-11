@@ -86,7 +86,7 @@ export default {
   overflow-y: scroll;
 
   .detail {
-    transition: all 1s, opacity 0.5s ease-in;
+    transition: all 1s ease, opacity 0.5s ease-in;
     height: 100%;
 
     .info {
@@ -151,7 +151,7 @@ export default {
   .horizon {
     display: flex;
     align-items: center;
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bolder;
     margin: 16px 0px;
     &::after {
