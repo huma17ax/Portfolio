@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Main from '@/components/Main'
 import About from '@/components/About'
 import Works from '@/components/Works'
+import Links from '@/components/Links'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/Works',
       name: 'Works',
       component: Works
+    },
+    {
+      path: '/Links',
+      name: 'Links',
+      component: Links
     },
   ]
 })

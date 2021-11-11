@@ -10,8 +10,8 @@
     <span class='Pd range' v-on:click="goPage('/Works')">
         Works
     </span>
-    <span class='Ct range' v-on:click="goPage('/Contact')">
-        Contact
+    <span class='Ct range' v-on:click="goPage('/Links')">
+        Links
     </span>
   </div>
 </template>

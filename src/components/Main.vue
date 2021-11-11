@@ -13,7 +13,7 @@
             v-on:click.native="goPage('/Works')">Works</myButton>
             <myButton
             class="button-item"
-            v-on:click.native="goPage('/Contact')">Contact</myButton>
+            v-on:click.native="goPage('/Links')">Link</myButton>
         </div>
     </div>
 </template>
