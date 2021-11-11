@@ -106,10 +106,10 @@ export default {
         }
       }
       .text-info {
-        width: 50%;
-        height: 100%;
-        margin-left: 16px;
-        margin-top: 32px;
+        width: calc(50% - 48px);
+        height: calc(100% - 32px);
+        padding-left: 16px;
+        padding-top: 32px;
 
         .title {
           padding-bottom: 16px;
@@ -153,7 +153,7 @@ export default {
     align-items: center;
     font-size: 1.3em;
     font-weight: bolder;
-    margin: 4px 0px;
+    margin: 16px 0px;
     &::after {
       content: '';
       height: 2px;
@@ -226,11 +226,35 @@ export default {
         .tag {
           position: absolute;
           top: 0;
-          right: 0;
-          padding: 2px 6px;
-          color: #EEEEEE;
-          background: $main-color;
+          left: 0;
+          padding-left: 16px;
+          padding-right: 4px;
+          height: 24px;
+          color: #222222;
+          background: $sub-color;
           font-weight: bolder;
+          &::before {
+            position: absolute;
+            top: -2px;
+            right: -8px;
+            width: 0;
+            height: 0;
+            content: '';
+            border-width: 14px 0px 14px 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent $sub-color;
+            border-radius: 4px;
+          }
+          &::after {
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            content: '';
+            border-radius: 10px;
+          }
         }
       }
     }
