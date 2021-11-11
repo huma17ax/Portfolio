@@ -84,6 +84,7 @@ export default {
   height: 100%;
   margin: auto;
   overflow-y: scroll;
+  padding-right: 8px;
 
   .detail {
     transition: all 1s ease, opacity 0.5s ease-in;

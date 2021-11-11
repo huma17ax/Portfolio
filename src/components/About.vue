@@ -61,6 +61,7 @@ export default {
   height: 100%;
   margin: auto;
   overflow-y: auto;
+  padding-right: 8px;
 }
 
 .identity {
