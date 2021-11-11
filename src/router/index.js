@@ -4,6 +4,7 @@ import Main from '@/components/Main'
 import About from '@/components/About'
 import Works from '@/components/Works'
 import Links from '@/components/Links'
+import Skills from '@/components/Skills'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/About',
       name: 'About',
       component: About
+    },
+    {
+      path: '/Skills',
+      name: 'Skills',
+      component: Skills
     },
     {
       path: '/Works',

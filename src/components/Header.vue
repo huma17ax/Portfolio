@@ -4,8 +4,8 @@
     <span class='Am range' v-on:click="goPage('/About')">
         About
     </span>
-    <span class='Ac range' v-on:click="goPage('/Activity')">
-        Activity
+    <span class='Ac range' v-on:click="goPage('/Skills')">
+        Skills
     </span>
     <span class='Pd range' v-on:click="goPage('/Works')">
         Works

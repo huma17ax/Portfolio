@@ -7,7 +7,7 @@
             v-on:click.native="goPage('/About')">About</myButton>
             <myButton
             class="button-item"
-            v-on:click.native="goPage('/Activity')">Activity</myButton>
+            v-on:click.native="goPage('/Skills')">Skills</myButton>
             <myButton
             class="button-item"
             v-on:click.native="goPage('/Works')">Works</myButton>
