@@ -12,11 +12,14 @@
       <table>
         <tr v-for="data in item.history" v-bind:key="data.id">
           <th>{{ data.period }}</th>
-          <td v-html="data.content"></td>
+          <td class="event">
+            {{data.content}}
+            <img class="link-icon" src="@/assets/icon/open-in-new.svg" @click="open(data.link)" v-if="data.link">
+          </td>
         </tr>
         <tr v-if="idx==0">
           <th>{{ nowDateStr }}</th>
-          <td v-html="'現在'"></td>
+          <td>現在</td>
         </tr>
       </table>
     </div>
@@ -35,7 +38,7 @@ export default {
       items: [
         {title: '経歴', history: careerData},
         {title: '資格・検定', history: qualifications},
-        {title: '論文', history: research}
+        {title: '発表・論文', history: research}
       ],
     }
   },
@@ -43,6 +46,11 @@ export default {
     nowDateStr () {
       const date = new Date()
       return date.getFullYear() + '年' + date.getMonth() + '月'
+    }
+  },
+  methods: {
+    open (url) {
+      window.open(url)
     }
   }
 }
@@ -80,6 +88,18 @@ export default {
 
 .content {
   margin-bottom: 20px;
+
+  .event {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    .link-icon {
+      width: 16px;
+      height: 16px;
+      color: $main-color;
+      cursor: pointer;
+    }
+  }
 }
 
 h2 {

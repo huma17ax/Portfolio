@@ -1,10 +1,12 @@
 [
   {
     "period": "2021年3月",
-    "content": "情報処理学会全国大会2021<br>「仮想現実環境における入力のための陰影に基づく指と皮膚の接触判定」"
+    "content": "情報処理学会全国大会2021\n「仮想現実環境における入力のための陰影に基づく指と皮膚の接触判定」",
+    "link": "https://www.ipsj.or.jp/event/taikai/83/ipsj_web2021/data/pdf/2ZB-05.html"
   },
   {
     "period": "2021年7月",
-    "content": "HCI International 2021<br>「Detection of Finger Contact with Skin based on Shadows and Texture around Fingertips」"
+    "content": "HCI International 2021\n「Detection of Finger Contact with Skin based on Shadows and Texture around Fingertips」",
+    "link": "https://link.springer.com/chapter/10.1007/978-3-030-78465-2_9"
   }
 ]
