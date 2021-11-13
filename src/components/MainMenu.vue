@@ -59,7 +59,7 @@ export default {
   height: 40px;
   margin-bottom: 8px;
   background-color: white;
-  border: solid 2px $sub-color;
+  border: solid 2px $main-color;
   border-radius: 5px;
   font-size: 1.1em;
   font-weight: bolder;
@@ -68,21 +68,21 @@ export default {
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: $main-color;
-    border: solid 2px $main-color;
+    background-color: $sub-color;
+    border: solid 2px $sub-color;
     color: black;
   }
 }
 
 .selected {
-  background-color: $sub-color;
-  border: solid 2px $sub-color;
+  background-color: $main-color;
+  border: solid 2px $main-color;
   cursor: default;
   color: black;
   transition: all 0.2s ease;
   &:hover {
-    background-color: $sub-color;
-    border: solid 2px $sub-color;
+    background-color: $main-color;
+    border: solid 2px $main-color;
     color: black;
   }
 }
