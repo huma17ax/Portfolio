@@ -172,12 +172,14 @@ export default {
         }
         .tech {
           margin-left: 16px;
-          margin-bottom: 24px;
+          margin-bottom: 16px;
           font-size: 1.1em;
         }
         .link {
           position: relative;
-          margin-right: 12px;
+          margin: 12px;
+          padding-top: 4px;
+          padding-bottom: 4px;
           font-size: 1.1em;
           background-color: white;
           border: none;

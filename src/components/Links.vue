@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <div :class="['horizon', {'clear': clearPage}]">Links</div>
-    <button class="item" :style="clearStyle(0)" @click="open('https://github.com/huma17ax')">GitHub</button>
-    <button class="item" :style="clearStyle(1)" @click="open('https://qiita.com/huma17ax')">Qiita</button>
-    <button class="item" :style="clearStyle(2)" @click="open('https://atcoder.jp/users/huma17')">AtCoder</button>
-    <button class="item" :style="clearStyle(3)" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</button>
+    <span :style="clearStyle(0)"><button class="item" @click="open('https://github.com/huma17ax')">GitHub</button></span>
+    <span :style="clearStyle(1)"><button class="item" @click="open('https://qiita.com/huma17ax')">Qiita</button></span>
+    <span :style="clearStyle(2)"><button class="item" @click="open('https://atcoder.jp/users/huma17')">AtCoder</button></span>
+    <span :style="clearStyle(3)"><button class="item" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</button></span>
   </div>
 </template>
 
@@ -33,12 +33,14 @@ export default {
     clearStyle (idx) {
       if (this.clearPage) {
         return {
+          transition: 'opacity 0.3s',
           opacity: '0',
           'transition-delay': 0.2-(idx/4*0.2) + 's'
         }
       }
       else {
         return {
+          transition: 'opacity 0.3s',
           'transition-delay': (idx/4*0.2) + 's'
         }
       }
@@ -92,7 +94,7 @@ export default {
     background-color: white;
     border: none;
     // border-radius: 8px;
-    transition: all 0.2s, opacity 0.3s;
+    transition: all 0.2s;
     &::after {
       position: absolute;
       content: '';

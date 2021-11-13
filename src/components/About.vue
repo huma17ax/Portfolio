@@ -159,9 +159,10 @@ tr {
 th {
   padding-left: 20px;
   text-align: left;
-  background-color: $main-color;
+  background-color: $sub-color;
   width: 150px;
   position: relative;
+  color: black;
 }
 
 th::after {
@@ -172,13 +173,13 @@ th::after {
   position: absolute;
   top: calc(50% - 10px);
   right: -10px;
-  border-left: 10px solid $main-color;
+  border-left: 10px solid $sub-color;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
 
 td {
-  background-color: #bbbbbb;
+  background-color: #d8d8d8;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 20px;
