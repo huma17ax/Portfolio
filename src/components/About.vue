@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
-    <div class="identity">
+    <div :class="['identity', {'clear': clearPage}]">
       <div>
         <div class="name">関谷 悠冬</div>
         <div class="belong">千葉大学大学院 融合理工学府 数学情報科学専攻</div>
       </div>
     </div>
-    <div class="content" v-for="(item, idx) in items" :key="idx">
+    <div class="content" :style="clearStyle(idx)" v-for="(item, idx) in items" :key="idx">
       <h2>{{item.title}}</h2>
       <table>
         <tr v-for="data in item.history" v-bind:key="data.id">
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 import careerData from "@/assets/json/history.json"
 import qualifications from "@/assets/json/qualifications.json"
 import research from "@/assets/json/research.json"
@@ -34,6 +36,7 @@ export default {
   name: "About",
   data () {
     return {
+      clearPage: true,
       items: [
         {title: '経歴', history: careerData},
         {title: '資格・検定', history: qualifications},
@@ -42,12 +45,35 @@ export default {
     }
   },
   computed: {
+    ...mapState('global', ['isPageTransition']),
     nowDateStr () {
       const date = new Date()
       return date.getFullYear() + '年' + date.getMonth() + '月'
     }
   },
+  watch: {
+    isPageTransition () {
+      if (this.isPageTransition) this.clearPage = true
+    }
+  },
+  mounted () {
+    setTimeout(() => {this.clearPage = false}, 20)
+  },
   methods: {
+    clearStyle (idx) {
+      if (this.clearPage) {
+        return {
+          transform: 'translateX(-' + (100 + 50*idx) + 'px)',
+          opacity: '0',
+          'transition-delay': 0.2-(idx/this.items.length*0.2) + 's'
+        }
+      }
+      else {
+        return {
+          'transition-delay': (idx/this.items.length*0.2) + 's'
+        }
+      }
+    },
     open (url) {
       window.open(url)
     }
@@ -69,6 +95,11 @@ export default {
   height: 75px;
   position: relative;
   margin: 8px 0px 16px 0px;
+  transition: all 0.3s;
+  .icon {
+    width: 75px;
+    border-radius: 20px;
+  }
   .name {
     position: relative;
     font-size: 2em;
@@ -83,8 +114,14 @@ export default {
   }
 }
 
+.clear {
+  opacity: 0;
+  transition-delay: 0.2s;
+}
+
 .content {
   margin-bottom: 20px;
+  transition: all 0.3s;
 
   .event {
     white-space: pre-wrap;

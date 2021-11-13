@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <div class="horizon">Skills</div>
-    <div class="content" v-for="(skill, idx) in skills" :key="idx">
+    <div :class="['horizon', {'clear': clearPage}]">Skills</div>
+    <div class="content" :style="clearStyle(idx)" v-for="(skill, idx) in skills" :key="idx">
       <div class="title">{{skill.title}}</div>
       <div class="tech">
         <span>{{techStr(skill.tech)}}</span>
@@ -13,16 +13,28 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 import skillData from '@/assets/json/skills.json'
 
 export default {
   name: "Skills",
   data () {
     return {
+      clearPage: true,
       skills: skillData
     }
   },
+  computed: {
+    ...mapState('global', ['isPageTransition']),
+  },
+  watch: {
+    isPageTransition () {
+      if (this.isPageTransition) this.clearPage = true
+    }
+  },
   mounted () {
+    setTimeout(() => {this.clearPage = false}, 20)
   },
   methods: {
     techStr (tech) {
@@ -31,6 +43,20 @@ export default {
     subTechStr (subTech) {
       if (subTech.length == 0) return ''
       return ', ' + subTech.join(', ')
+    },
+    clearStyle (idx) {
+      if (this.clearPage) {
+        return {
+          transform: 'translateX(-' + (100 + 50*idx) + 'px)',
+          opacity: '0',
+          'transition-delay': 0.2-(idx/this.skills.length*0.2) + 's'
+        }
+      }
+      else {
+        return {
+          'transition-delay': (idx/this.skills.length*0.2) + 's'
+        }
+      }
     }
   }
 }
@@ -51,6 +77,7 @@ export default {
     font-size: 1.5em;
     font-weight: bolder;
     margin: 16px 0px;
+    transition: all 0.3s;
     &::after {
       content: '';
       height: 2px;
@@ -59,9 +86,15 @@ export default {
       flex-grow: 1;
     }
   }
+  
+  .clear {
+    opacity: 0;
+    transition-delay: 0.2s;
+  }
 
   .content {
     margin-bottom: 24px;
+    transition: all 0.3s;
     .title {
       font-size: 1.5em;
       font-weight: bolder;

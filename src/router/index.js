@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store/index.js'
+
 import Main from '@/components/Main'
 import About from '@/components/About'
 import Works from '@/components/Works'
@@ -8,7 +10,7 @@ import Skills from '@/components/Skills'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -37,3 +39,19 @@ export default new Router({
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (!from.name) next()
+  else if (to.name !== from.name && !store.state.global.isPageTransition) {
+    store.commit('global/setPageTransition', true)
+    setTimeout(() => {
+      next()
+    }, 500)
+  }
+})
+
+router.afterEach(() => {
+  store.commit('global/setPageTransition', false)
+})
+
+export default router

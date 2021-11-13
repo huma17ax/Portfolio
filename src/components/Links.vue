@@ -1,22 +1,48 @@
 <template>
   <div class="wrapper">
-    <div class="horizon">Links</div>
-    <button class="item" @click="open('https://github.com/huma17ax')">GitHub</button>
-    <button class="item" @click="open('https://qiita.com/huma17ax')">Qiita</button>
-    <button class="item" @click="open('https://atcoder.jp/users/huma17')">AtCoder</button>
-    <button class="item" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</button>
+    <div :class="['horizon', {'clear': clearPage}]">Links</div>
+    <button class="item" :style="clearStyle(0)" @click="open('https://github.com/huma17ax')">GitHub</button>
+    <button class="item" :style="clearStyle(1)" @click="open('https://qiita.com/huma17ax')">Qiita</button>
+    <button class="item" :style="clearStyle(2)" @click="open('https://atcoder.jp/users/huma17')">AtCoder</button>
+    <button class="item" :style="clearStyle(3)" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</button>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 
 export default {
   name: "Links",
   data () {
     return {
+      clearPage: true,
     }
   },
+  computed: {
+    ...mapState('global', ['isPageTransition']),
+  },
+  watch: {
+    isPageTransition () {
+      if (this.isPageTransition) this.clearPage = true
+    }
+  },
+  mounted () {
+    setTimeout(() => {this.clearPage = false}, 20)
+  },
   methods: {
+    clearStyle (idx) {
+      if (this.clearPage) {
+        return {
+          opacity: '0',
+          'transition-delay': 0.2-(idx/4*0.2) + 's'
+        }
+      }
+      else {
+        return {
+          'transition-delay': (idx/4*0.2) + 's'
+        }
+      }
+    },
     open (url) {
       window.open(url)
     }
@@ -39,6 +65,7 @@ export default {
     font-size: 1.5em;
     font-weight: bolder;
     margin: 16px 0px;
+    transition: all 0.3s;
     &::after {
       content: '';
       height: 2px;
@@ -46,6 +73,11 @@ export default {
       background-color: #333;
       flex-grow: 1;
     }
+  }
+
+  .clear {
+    opacity: 0;
+    transition-delay: 0.2s;
   }
 
   .item {
@@ -60,7 +92,7 @@ export default {
     background-color: white;
     border: none;
     // border-radius: 8px;
-    transition: all 0.2s;
+    transition: all 0.2s, opacity 0.3s;
     &::after {
       position: absolute;
       content: '';

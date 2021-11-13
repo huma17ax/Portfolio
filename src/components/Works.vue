@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapper" class="wrapper">
-    <div :class="['detail', {'hidden': isHiddenDetail, 'transparent': isTransparentDetail}]">
+    <div :class="['detail', {'hidden': isHiddenDetail, 'transparent': (isTransparentDetail || clearPage)}]">
       <div class="info" v-if="selectedWork">
         <button class="close" @click="close"><img src="@/assets/icon/close.svg" style="width:100%;height:100%;"></button>
         <div class="text-info">
@@ -22,10 +22,10 @@
       </div>
       <div class="description" v-if="selectedWork">{{selectedWork.desc}}</div>
     </div>
-    <div class="horizon">Works</div>
+    <div :class="['horizon', {'clear': clearPage}]">Works</div>
     <!-- <transition-group name="list-complete" class="container" tag="div"> -->
     <div class="container">
-      <div class="content" v-for="(work, idx) in works" :key="work.id" @click="select(idx)">
+      <div class="content" :style="clearStyle(idx)" v-for="(work, idx) in works" :key="work.id" @click="select(idx)">
         <div class="frame">
           <img class="image" :src="require('@/assets/image/'+work.image)">
           <div class="title">{{work.title}}</div>
@@ -39,12 +39,15 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 import worksData from '@/assets/json/works.json'
 
 export default {
   name: "Works",
   data () {
     return {
+      clearPage: true,
       works: [],
       selectedWork: undefined,
       isHiddenDetail: true,
@@ -53,18 +56,33 @@ export default {
   },
   mounted () {
     this.works = worksData.map((item, idx) => {item.id=idx; return item})
-  },
-  watch: {
-    works () {
-      console.log(this.works)
-    }
+    setTimeout(() => {this.clearPage = false}, 20)
   },
   computed: {
+    ...mapState('global', ['isPageTransition']),
     // workList () {
     //   return this.works.filter((item) => item != this.selectedWork)
     // }
   },
+  watch: {
+    isPageTransition () {
+      if (this.isPageTransition) this.clearPage = true
+    }
+  },
   methods: {
+    clearStyle (idx) {
+      if (this.clearPage) {
+        return {
+          opacity: '0',
+          'transition-delay': 0.2-(idx/this.works.length*0.2) + 's'
+        }
+      }
+      else {
+        return {
+          'transition-delay': (idx/this.works.length*0.2) + 's'
+        }
+      }
+    },
     developScale (isTeam) {
       if (isTeam) return {
         'text': 'チーム開発',
@@ -215,6 +233,7 @@ export default {
     font-size: 1.5em;
     font-weight: bolder;
     margin: 16px 0px;
+    transition: all 0.3s;
     &::after {
       content: '';
       height: 2px;
@@ -222,6 +241,11 @@ export default {
       background-color: #333;
       flex-grow: 1;
     }
+  }
+  
+  .clear {
+    opacity: 0;
+    transition-delay: 0.2s;
   }
 
   .container {
@@ -231,7 +255,7 @@ export default {
       position: relative;
       width: 25%;
       display: inline-block;
-      transition: all 1s;
+      transition: all 1s, opacity 0.3s;
       &::before {
         display: block;
         content: "";
