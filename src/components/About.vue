@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="identity">
-      <img class="icon" src="@/assets/image/icon.jpg">
       <div>
         <div class="name">関谷 悠冬</div>
         <div class="belong">千葉大学大学院 融合理工学府 数学情報科学専攻</div>
@@ -58,32 +57,29 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
+  display: block;
   height: 100%;
-  margin: auto;
+  width: 100%;
   overflow-y: auto;
-  padding-right: 8px;
+  padding-right: 16px;
 }
 
 .identity {
   display: flex;
   height: 75px;
   position: relative;
-  margin: 16px 0px;
-  .icon {
-    width: 75px;
-    border-radius: 20px;
-  }
+  margin: 8px 0px 16px 0px;
   .name {
     position: relative;
     font-size: 2em;
     top: 10px;
-    left: 20px;
+    left: 10px;
   }
   .belong {
     position: relative;
     font-size: 1em;
     top: 2px;
-    left: 20px;
+    left: 10px;
   }
 }
 

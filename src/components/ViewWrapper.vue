@@ -1,19 +1,19 @@
 <template>
-  <div class='wrapper'>
-    <MyHeader class='header'></MyHeader>
-    <div class='view'>
+  <div class="wrapper">
+    <MainMenu class="menu"></MainMenu>
+    <div class="view">
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import MyHeader from './Header.vue'
+import MainMenu from './MainMenu'
 
 export default {
   name: 'app',
   components: {
-    MyHeader
+    MainMenu
   },
   data: function () {
     return {
@@ -25,17 +25,19 @@ export default {
 <style lang='scss' scoped>
 .wrapper {
   height: 100%;
-  width: 100%;
+  width: 878px;
+  display: flex;
+  margin: auto;
 }
 
-.header {
-  height: 70px;
-  margin: 0 auto;
+.menu {
+  display: block;
+  width: 128px;
 }
 
 .view {
-  height: calc(100% - 70px);
-  max-width: 750px;
+  height: 100%;
+  width: 750px;
   margin: 0 auto;
 }
 </style>

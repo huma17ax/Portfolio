@@ -106,7 +106,9 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
+  display: block;
   height: 100%;
+  width: 100%;
   margin: auto;
   overflow-y: scroll;
   padding-right: 8px;
