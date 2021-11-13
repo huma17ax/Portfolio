@@ -9,7 +9,7 @@
     "title": "web開発",
     "tech": ["HTML", "CSS", "JavaScript", "Vue.js", "Python", "Django"],
     "sub_tech": ["Node.js", "Firebase", "Ruby on Rails"],
-    "desc": "アルバイトとしてwebサービスの開発に携わる．\nまたコロナウイルスの影響を受け，大学にて所属する学生団体の活動をオンライン化するwebアプリの開発など．"
+    "desc": "アルバイトとしてwebサービスの開発に携わる．\nまた，大学にて所属する学生団体の活動をオンライン化するwebアプリの開発など．"
   },
   {
     "title": "機械学習",
@@ -21,6 +21,6 @@
     "title": "アルゴリズム",
     "tech": ["C++"],
     "sub_tech": [],
-    "desc": "競技プログラミングサイトAtCoder等にてコンテストに参加．最高レート1480(水色中位)．"
+    "desc": "競技プログラミングサイトAtCoder等にてコンテストに参加．AtCoder最高レート1480(水色中位)．"
   }
 ]

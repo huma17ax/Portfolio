@@ -1,50 +1,132 @@
 [
   {
-    "image": "test.png",
-    "title": "テスト",
-    "tag": "Unity",
-    "period": "2021年3月",
-    "tech": "Unity",
-    "desc": "ああああ"
-  },
-  {
-    "image": "test2.png",
-    "title": "テスト2",
+    "image": "portfolio.jpg",
+    "title": "ポートフォリオ",
+    "link": ["https://github.com/huma17ax/Portfolio"],
     "tag": "JavaScript",
-    "period": "2019年10月",
-    "tech": "JavaScript, Node.js, Firebase",
-    "desc": "いいいいいいいいいいいいいいいいいいいいいいいいい\n"
+    "period": "2021年11月",
+    "is_team": false,
+    "tech": "JavaScript, Vue.js",
+    "desc": "自分のスキル・制作物を掲載したwebサイト(Here)．\n旧ホームページから，デザイン・アニメーション，コンテンツ内容，ソースコードを修正．"
   },
   {
-    "image": "test.png",
-    "title": "aaa",
-    "tag": "Python",
-    "period": "2021年3月aaa",
-    "tech": "Python",
-    "desc": "長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列"
-  },
-  {
-    "image": "tetrock.png",
-    "title": "TETROCK",
+    "image": "polyomino_vr.png",
+    "title": "ポリオミノVR",
+    "link": ["https://github.com/huma17ax/polyominoVR"],
     "tag": "Unity",
-    "period": "2021年3月",
-    "tech": "Unity",
-    "desc": "ああああ"
+    "period": "2021年9月～",
+    "is_team": false,
+    "tech": "Unity, C#",
+    "desc": "(Work in progress)\nVRで操作するポリオミノパズル．\n動作を「握る」「手首を回転させる」に限定することで，コントローラー上のボタンを用いない操作方法を挑戦的に導入．"
+  },
+  {
+    "image": "magneter.png",
+    "title": "Magneter",
+    "link": ["https://github.com/huma17ax/magneter"],
+    "tag": "Unity",
+    "period": "2021年8月",
+    "is_team": true,
+    "tech": "Unity, C#",
+    "desc": "キャラクターとステージ上のブロックが反発/吸引する力を使ってゴールを目指す2Dアクションゲーム．\nG2 Studios株式会社のサマーインターンに参加し，4名でチーム開発．\nタスク・スケジュール・GitLabの管理，及びゲームギミックやリトライ機能等の追加を担当．\n最終成果報告において，3チームの中で最も良い評価を獲得．"
+  },
+  {
+    "image": "nttool.png",
+    "title": "NT Tool",
+    "link": ["https://github.com/huma17ax/firebase_nttool", "https://nttool.firebaseapp.com/#/"],
+    "tag": "JavaScript",
+    "period": "2020年5月",
+    "is_team": false,
+    "tech": "JavaScript, Vue.js, Node.js, Firebase",
+    "desc": "大学にて所属している聴覚障害支援の学生団体の活動をオンライン化するwebアプリ．\nインターネット上で「ノートテイク」の練習を行うことができる．\n対面活動時に使用していたLAN内で動作するノートテイク用ソフトの機能をweb上に再現するとともに，オンラインでの活動を円滑にするための全体連絡機能，グループ分け機能，管理者にメンバーの状態を表示する機能などを追加．\n\n※ノートテイクとは，利用者(要支援者)とともに支援者が授業に出席し，現地の声や環境音をリアルタイムでPCに打ち込み文字起こしを行う支援方法．文字通訳とも言う．\n通常，複数人の支援者が派遣され，連携して1つの文章を打ち込むため，支援者間での連携が重要になり，練習が必要となる．"
+  },
+  {
+    "image": "ball_balance.png",
+    "title": "Ball Balance",
+    "link": ["https://github.com/huma17ax/ball-balance", "https://huma17ax.github.io/ball-balance/#/"],
+    "tag": "JavaScript",
+    "period": "2020年5月",
+    "is_team": false,
+    "tech": "JavaScript, Vue.js",
+    "desc": "障害物に当たらないようにボールをゴールまで導くミニゲーム．\nスマートフォンからアクセスすると端末を傾けて動かすジャイロ操作が可能．"
+  },
+  {
+    "image": "hrmonster.png",
+    "title": "HRモンスター",
+    "link": ["https://hr-monster.io/"],
+    "tag": "JavaScript / Python",
+    "period": "2019年12月～",
+    "is_team": true,
+    "tech": "JavaScript, Vue.js, Python, Django",
+    "desc": "株式会社robottteが開発する求人・人材系ツール/プラットフォーム．\nアルバイトとしてフロントエンド，バックエンドに携わる．\n画面制作，機能追加・改修，不具合修正など，サービス全般のタスクを担当．\nまた，一部機械学習を用いた画像処理タスクも担当．"
+  },
+  {
+    "image": "portfolio.jpg",
+    "title": "ホームページ",
+    "link": ["https://github.com/huma17ax/MyPages","https://huma17ax.github.io/MyPages/#/"],
+    "tag": "JavaScript",
+    "period": "2019年12月",
+    "is_team": false,
+    "tech": "JavaScript, Vue.js",
+    "desc": "アカリエヘルスケアカンパニー株式会社(現・株式会社robottte)にアルバイトとして入社する際に作成した自己紹介webサイト．更新停止．"
+  },
+  {
+    "image": "gravrep.png",
+    "title": "GravRepeat",
+    "link": ["https://github.com/huma17ax/GravRepeat"],
+    "tag": "Unity",
+    "period": "2019年春",
+    "is_team": false,
+    "tech": "Unity, C#",
+    "desc": "上下に移動して壁の間を進んでいくミニゲーム．\n2019年度サークル新歓向けに制作．"
+  },
+  {
+    "image": "shooting_package.png",
+    "title": "STG Package",
+    "link": ["https://github.com/huma17ax/STG-Package"],
+    "tag": "Java",
+    "period": "2019年1月",
+    "is_team": false,
+    "tech": "Java",
+    "desc": "ゲーム(主にシューティングゲーム)を開発する際に使用できるオブジェクト管理フレームワーク．\n基底クラス，オブジェクト登録，当たり判定，キー入力管理等を提供する．\n実装例として制作したシューティングゲームを含む．\n大学の授業での課題として制作．"
   },
   {
     "image": "fortunetelling.png",
     "title": "FortuneTelling",
-    "tag": "JavaScript",
-    "period": "2019年10月",
-    "tech": "JavaScript, Node.js, Firebase",
-    "desc": "いいいいいいいいいいいいいいいいいいいいいいいいい\n"
+    "link": ["https://github.com/huma17ax/FortuneTelling"],
+    "tag": "Java",
+    "period": "2018年",
+    "is_team": false,
+    "tech": "Java",
+    "desc": "トランプゲームであるソリティアの一種を制作．"
+  },
+  {
+    "image": "tetrock.png",
+    "title": "TETROCK",
+    "link": ["https://github.com/huma17ax/TETROCK"],
+    "tag": "C++",
+    "period": "2018年夏",
+    "is_team": false,
+    "tech": "C++, Dxライブラリ",
+    "desc": "隙間を開けるほど得点が得られるテトリス風ゲーム．\n2018年度大学祭にて展示・コミックマーケットにて販売．"
   },
   {
     "image": "dragonslayer.png",
     "title": "DragonSlayer",
-    "tag": "Python",
-    "period": "2021年3月aaa",
-    "tech": "Python",
-    "desc": "長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列長い文字列"
+    "link": ["https://github.com/huma17ax/DragonSlayer"],
+    "tag": "Unity",
+    "period": "2017年夏",
+    "is_team": true,
+    "tech": "Unity, C#",
+    "desc": "3Dアクションゲーム．\n大学のサークル内で，プログラム/グラフィック/サウンドの3名で制作．\nプログラマとしてゲームシステムの開発を行うとともに，3名間のスケジュール調整等を担当．\n2017年度大学祭にて展示・コミックマーケットにて販売．"
+  },
+  {
+    "image": "acc_stg.png",
+    "title": "acc STG",
+    "link": ["https://github.com/huma17ax/acc_STG"],
+    "tag": "C++",
+    "period": "2017年春",
+    "is_team": false,
+    "tech": "C++, Dxライブラリ",
+    "desc": "2Dシューティングゲーム．\n2017年度大学祭にて展示・コミックマーケットにて販売．"
   }
 ]
