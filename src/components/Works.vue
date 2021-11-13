@@ -317,7 +317,7 @@ export default {
           padding-left: 16px;
           padding-right: 4px;
           height: 24px;
-          color: #222222;
+          color: black;
           background: $sub-color;
           font-weight: bolder;
           &::before {

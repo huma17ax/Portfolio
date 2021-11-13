@@ -64,11 +64,13 @@ export default {
   font-size: 1.1em;
   font-weight: bolder;
   cursor: pointer;
+  color: #2c3e50;
   transition: all 0.2s ease;
 
   &:hover {
     background-color: $main-color;
     border: solid 2px $main-color;
+    color: black;
   }
 }
 
@@ -76,10 +78,12 @@ export default {
   background-color: $sub-color;
   border: solid 2px $sub-color;
   cursor: default;
+  color: black;
   transition: all 0.2s ease;
   &:hover {
     background-color: $sub-color;
     border: solid 2px $sub-color;
+    color: black;
   }
 }
 </style>
