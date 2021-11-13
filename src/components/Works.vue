@@ -5,10 +5,18 @@
         <button class="close" @click="close"><img src="@/assets/icon/close.svg" style="width:100%;height:100%;"></button>
         <div class="text-info">
           <div class="title">{{selectedWork.title}}</div>
-          時期・期間：
-          <div class="period">{{selectedWork.period}}</div>
-          使用技術：
+          <!-- 開発/リリース時期： -->
+          <div class="period">
+            {{selectedWork.period}}
+            <span class="develop" :style="developScale(selectedWork.is_team).color">{{developScale(selectedWork.is_team).text}}</span>
+          </div>
+          <!-- 使用技術： -->
           <div class="tech">{{selectedWork.tech}}</div>
+          <div>
+            <button class="link" v-for="(url, idx) in selectedWork.link" :key="idx" @click="open(url)">
+              {{linkStr(url)}}
+            </button>
+          </div>
         </div>
         <img class="image" :src="require('@/assets/image/'+selectedWork.image)">
       </div>
@@ -57,6 +65,23 @@ export default {
     // }
   },
   methods: {
+    developScale (isTeam) {
+      if (isTeam) return {
+        'text': 'チーム開発',
+        'color': 'background-color: #d1ffd1;'
+      }
+      else return {
+        'text': '個人開発',
+        'color': 'background-color: #ffead6;'
+      }
+    },
+    linkStr (url) {
+      if (url.indexOf('github.com') != -1) return 'GitHub'
+      else return 'Link'
+    },
+    open (url) {
+      window.open(url)
+    },
     select (idx) {
       this.$refs.wrapper.scrollTo({top: 0, behavior: 'smooth'})
       let delay = 0;
@@ -110,20 +135,50 @@ export default {
         width: calc(50% - 48px);
         height: calc(100% - 32px);
         padding-left: 16px;
-        padding-top: 32px;
+        padding-top: 48px;
 
         .title {
-          padding-bottom: 16px;
-          font-size: 3em;
+          padding-bottom: 8px;
+          font-size: 2.8em;
         }
         .period {
           margin-left: 16px;
           margin-bottom: 8px;
           font-size: 1.1em;
+          .develop {
+            margin-left: 32px;
+            padding: 0px 8px;
+          }
         }
         .tech {
           margin-left: 16px;
+          margin-bottom: 24px;
           font-size: 1.1em;
+        }
+        .link {
+          position: relative;
+          margin-right: 12px;
+          font-size: 1.1em;
+          background-color: white;
+          border: none;
+          cursor: pointer;
+          text-align: center;
+          transition: all 0.2s;
+          &::after {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 0;
+            background: $main-color;
+            width: 100%;
+            height: 2px;
+          }
+          &:hover {
+            background-color: $sub-color;
+          }
+          &:hover::after {
+            height: 0px;
+          }
         }
       }
 
@@ -137,6 +192,9 @@ export default {
     }
     .description {
       height: calc(100% - 300px);
+      padding-top: 16px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
       overflow-y: hidden;
     }
   }
