@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store/index.js'
 
-import Main from '@/components/Main'
 import About from '@/components/About'
 import Works from '@/components/Works'
 import Links from '@/components/Links'
@@ -14,11 +13,6 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Main',
-      component: Main
-    },
-    {
-      path: '/About',
       name: 'About',
       component: About
     },

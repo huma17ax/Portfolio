@@ -2,8 +2,8 @@
   <div>
     <div class="wrapper">
       <img class="icon" src="@/assets/image/icon.jpg">
-      <button :class="['button', {'selected': isSelected(path)}]" v-for="(path, idx) in pages" :key="idx" v-on:click="goPage(path)">
-        {{path}}
+      <button :class="['button', {'selected': isSelected(page.path)}]" v-for="(page, idx) in pages" :key="idx" v-on:click="goPage(page.path)">
+        {{page.title}}
       </button>
     </div>
   </div>
@@ -19,7 +19,12 @@ export default {
   },
   data: function () {
     return {
-      pages: ['About', 'Skills', 'Works', 'Links']
+      pages: [
+        {path:'/', title:'About'},
+        {path:'/Skills', title:'Skills'},
+        {path:'/Works', title:'Works'},
+        {path:'/Links', title:'Links'}
+      ]
     }
   },
   computed: {
@@ -27,11 +32,9 @@ export default {
   },
   methods: {
     goPage (path) {
-      path = '/' + path
       if (this.$route.path !== path && !this.isPageTransition) this.$router.push(path)
     },
     isSelected (path) {
-      path = '/' + path
       return (this.$route.path == path)
     }
   }
