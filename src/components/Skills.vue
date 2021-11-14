@@ -13,28 +13,19 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-
 import skillData from '@/assets/json/skills.json'
+
+import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Skills",
+  mixins: [
+    pageTransition
+  ],
   data () {
     return {
-      clearPage: true,
       skills: skillData
     }
-  },
-  computed: {
-    ...mapState('global', ['isPageTransition']),
-  },
-  watch: {
-    isPageTransition () {
-      if (this.isPageTransition) this.clearPage = true
-    }
-  },
-  mounted () {
-    setTimeout(() => {this.clearPage = false}, 20)
   },
   methods: {
     techStr (tech) {

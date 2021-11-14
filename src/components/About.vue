@@ -26,17 +26,19 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-
 import careerData from "@/assets/json/history.json"
 import qualifications from "@/assets/json/qualifications.json"
 import research from "@/assets/json/research.json"
 
+import pageTransition from '@/mixins/PageTransition'
+
 export default {
   name: "About",
+  mixins: [
+    pageTransition
+  ],
   data () {
     return {
-      clearPage: true,
       items: [
         {title: '経歴', history: careerData},
         {title: '資格・検定', history: qualifications},
@@ -45,19 +47,10 @@ export default {
     }
   },
   computed: {
-    ...mapState('global', ['isPageTransition']),
     nowDateStr () {
       const date = new Date()
       return date.getFullYear() + '年' + date.getMonth() + '月'
     }
-  },
-  watch: {
-    isPageTransition () {
-      if (this.isPageTransition) this.clearPage = true
-    }
-  },
-  mounted () {
-    setTimeout(() => {this.clearPage = false}, 20)
   },
   methods: {
     clearStyle (idx) {

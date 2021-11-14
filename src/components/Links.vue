@@ -9,25 +9,16 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Links",
+  mixins: [
+    pageTransition
+  ],
   data () {
     return {
-      clearPage: true,
     }
-  },
-  computed: {
-    ...mapState('global', ['isPageTransition']),
-  },
-  watch: {
-    isPageTransition () {
-      if (this.isPageTransition) this.clearPage = true
-    }
-  },
-  mounted () {
-    setTimeout(() => {this.clearPage = false}, 20)
   },
   methods: {
     clearStyle (idx) {

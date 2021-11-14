@@ -39,15 +39,17 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-
 import worksData from '@/assets/json/works.json'
+
+import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Works",
+  mixins: [
+    pageTransition
+  ],
   data () {
     return {
-      clearPage: true,
       works: [],
       selectedWork: undefined,
       isHiddenDetail: true,
@@ -56,18 +58,11 @@ export default {
   },
   mounted () {
     this.works = worksData.map((item, idx) => {item.id=idx; return item})
-    setTimeout(() => {this.clearPage = false}, 20)
   },
   computed: {
-    ...mapState('global', ['isPageTransition']),
     // workList () {
     //   return this.works.filter((item) => item != this.selectedWork)
     // }
-  },
-  watch: {
-    isPageTransition () {
-      if (this.isPageTransition) this.clearPage = true
-    }
   },
   methods: {
     clearStyle (idx) {
