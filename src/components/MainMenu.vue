@@ -78,12 +78,12 @@ export default {
   background-color: $main-color;
   border: solid 2px $main-color;
   cursor: default;
-  color: black;
+  color: white;
   transition: all 0.2s ease;
   &:hover {
     background-color: $main-color;
     border: solid 2px $main-color;
-    color: black;
+    color: white;
   }
 }
 </style>
