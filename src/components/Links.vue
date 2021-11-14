@@ -1,18 +1,23 @@
 <template>
   <div class="wrapper">
     <div :class="['horizon', {'clear': clearPage}]">Links</div>
-    <span :style="clearStyle(0)"><button class="item" @click="open('https://github.com/huma17ax')">GitHub</button></span>
-    <span :style="clearStyle(1)"><button class="item" @click="open('https://qiita.com/huma17ax')">Qiita</button></span>
-    <span :style="clearStyle(2)"><button class="item" @click="open('https://atcoder.jp/users/huma17')">AtCoder</button></span>
-    <span :style="clearStyle(3)"><button class="item" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</button></span>
+    <span :style="clearStyle(0)"><Button class="item" @click="open('https://github.com/huma17ax')">GitHub</Button></span>
+    <span :style="clearStyle(1)"><Button class="item" @click="open('https://qiita.com/huma17ax')">Qiita</Button></span>
+    <span :style="clearStyle(2)"><Button class="item" @click="open('https://atcoder.jp/users/huma17')">AtCoder</Button></span>
+    <span :style="clearStyle(3)"><Button class="item" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</Button></span>
   </div>
 </template>
 
 <script>
+import Button from '@/components/parts/Button'
+
 import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Links",
+  components: {
+    Button
+  },
   mixins: [
     pageTransition
   ],
@@ -74,33 +79,11 @@ export default {
   }
 
   .item {
-    position: relative;
     display: inline-block;
     width: 15%;
     margin: 32px 5% 0px 5%;
     padding: 8px 0px;
-    text-align: center;
     font-size: 1.2em;
-    cursor: pointer;
-    background-color: white;
-    border: none;
-    // border-radius: 8px;
-    transition: all 0.2s;
-    &::after {
-      position: absolute;
-      content: '';
-      bottom: 0;
-      left: 0;
-      background: $main-color;
-      width: 100%;
-      height: 2px;
-    }
-    &:hover {
-      background-color: $sub-color;
-    }
-    &:hover::after {
-      height: 0px;
-    }
   }
 }
 </style>

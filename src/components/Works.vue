@@ -13,9 +13,9 @@
           <!-- 使用技術： -->
           <div class="tech">{{selectedWork.tech}}</div>
           <div>
-            <button class="link" v-for="(url, idx) in selectedWork.link" :key="idx" @click="open(url)">
+            <Button class="link" v-for="(url, idx) in selectedWork.link" :key="idx" @click="open(url)">
               {{linkStr(url)}}
-            </button>
+            </Button>
           </div>
         </div>
         <img class="image" :src="require('@/assets/image/'+selectedWork.image)">
@@ -41,10 +41,15 @@
 <script>
 import worksData from '@/assets/json/works.json'
 
+import Button from '@/components/parts/Button'
+
 import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Works",
+  components: {
+    Button
+  },
   mixins: [
     pageTransition
   ],
@@ -171,31 +176,10 @@ export default {
           font-size: 1.1em;
         }
         .link {
-          position: relative;
           margin: 12px;
           padding-top: 4px;
           padding-bottom: 4px;
           font-size: 1.1em;
-          background-color: white;
-          border: none;
-          cursor: pointer;
-          text-align: center;
-          transition: all 0.2s;
-          &::after {
-            position: absolute;
-            content: '';
-            bottom: 0;
-            left: 0;
-            background: $main-color;
-            width: 100%;
-            height: 2px;
-          }
-          &:hover {
-            background-color: $sub-color;
-          }
-          &:hover::after {
-            height: 0px;
-          }
         }
       }
 
