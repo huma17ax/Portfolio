@@ -23,18 +23,24 @@
       <div class="description" v-if="selectedWork">{{selectedWork.desc}}</div>
     </div>
     <Horizon :class="{'clear': clearPage}">Works</Horizon>
-    <!-- <transition-group name="list-complete" class="container" tag="div"> -->
-    <div class="container">
-      <div class="content" :style="clearStyle(idx)" v-for="(work, idx) in works" :key="work.id" @click="select(idx)">
-        <div class="frame">
-          <img class="image" :src="require('@/assets/image/'+work.image)">
-          <div class="title">{{work.title}}</div>
-          <div class="period">{{work.period}}</div>
-          <div class="tag">{{work.tag}}</div>
+    <div :class="['order', {'clear': clearPage}]">
+      <button :class="['option', {'right': idx==0, 'selected': sortOrder==opt.order}]"
+        v-for="(opt, idx) in orderOptions" :key="idx" @click="setOrder(opt.order)">
+        {{opt.name}}
+      </button>
+    </div>
+    <transition-group name="works-list" class="container" tag="div">
+      <div class="content" v-for="(work, idx) in workList" :key="work.id" @click="select(idx)">
+        <div class="trans-frame" :style="clearStyle(idx)">
+          <div class="frame">
+            <img class="image" :src="require('@/assets/image/'+work.image)">
+            <div class="title">{{work.title}}</div>
+            <div class="period">{{work.period}}</div>
+            <div class="tag">{{work.tag}}</div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- </transition-group> -->
+    </transition-group>
   </div>
 </template>
 
@@ -60,16 +66,27 @@ export default {
       works: [],
       selectedWork: undefined,
       isHiddenDetail: true,
-      isTransparentDetail: false
+      isTransparentDetail: false,
+      sortOrder: 'time',
+      orderOptions: [
+        {order: 'time', name: '時系列順'},
+        {order: 'tag', name: 'タグ別'}
+      ],
     }
   },
   mounted () {
     this.works = worksData.map((item, idx) => {item.id=idx; return item})
   },
   computed: {
-    // workList () {
-    //   return this.works.filter((item) => item != this.selectedWork)
-    // }
+    workList () {
+      if (this.sortOrder == 'time') return this.works
+      else if (this.sortOrder == 'tag') {
+        return this.works.slice().sort((a,b) => {
+          return (a.tag == b.tag ? 0 : (a.tag < b.tag ? 1 : -1))
+        })
+      }
+      else return this.works
+    }
   },
   methods: {
     clearStyle (idx) {
@@ -98,6 +115,9 @@ export default {
     linkStr (url) {
       if (url.indexOf('github.com') != -1) return 'GitHub'
       else return 'Link'
+    },
+    setOrder (order) {
+      this.sortOrder = order
     },
     open (url) {
       window.open(url)
@@ -209,6 +229,33 @@ export default {
   .transparent {
     opacity: 0;
   }
+
+  .order {
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin-top: -22px;
+    margin-bottom: 8px;
+    transition: opacity 0.3s;
+    .option {
+      display: block;
+      margin-right: 8px;
+      border: solid 2px $main-color;
+      border-radius: 5px;
+      background-color: white;
+      font-weight: bolder;
+      font-size: 1.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .right {
+      margin-left: auto;
+    }
+    .selected {
+      background-color: $main-color;
+      color: white;
+    }
+  }
   
   .clear {
     opacity: 0;
@@ -222,90 +269,92 @@ export default {
       position: relative;
       width: 25%;
       display: inline-block;
-      transition: all 1s, opacity 0.3s;
       &::before {
         display: block;
         content: "";
         padding-top: 100%;
       }
-      .frame {
-        position: absolute;
-        top: 2.5%;
-        left: 2.5%;
-        width: 95%;
-        height: 95%;
-        transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s;
-        cursor: pointer;
-        background: white;
-        &:hover {
-          top: 0%;
-          left: 0%;
-          width: 100%;
-          height: 100%;
+      .trans-frame {
+        transition: all 1s, opacity 0.3s;
+        .frame {
+          position: absolute;
+          top: 2.5%;
+          left: 2.5%;
+          width: 95%;
+          height: 95%;
+          transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s;
+          cursor: pointer;
+          background: white;
+          &:hover {
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            .image {
+              opacity: 0.2;
+            }
+            .title {
+              display: inherit;
+            }
+            .period {
+              display: inherit;
+            }
+          }
           .image {
-            opacity: 0.2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.2s;
           }
           .title {
-            display: inherit;
+            display: none;
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: bolder;
           }
           .period {
-            display: inherit;
-          }
-        }
-        .image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: opacity 0.2s;
-        }
-        .title {
-          display: none;
-          position: absolute;
-          top: 30%;
-          width: 100%;
-          font-size: 1.5em;
-          text-align: center;
-          font-weight: bolder;
-        }
-        .period {
-          display: none;
-          position: absolute;
-          top: 50%;
-          width: 100%;
-          text-align: center;
-          font-weight: bolder;
-        }
-        .tag {
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding-left: 16px;
-          padding-right: 4px;
-          height: 24px;
-          color: black;
-          background: $sub-color;
-          font-weight: bolder;
-          &::before {
+            display: none;
             position: absolute;
-            top: -2px;
-            right: -8px;
-            width: 0;
-            height: 0;
-            content: '';
-            border-width: 14px 0px 14px 8px;
-            border-style: solid;
-            border-color: transparent transparent transparent $sub-color;
-            border-radius: 4px;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            font-weight: bolder;
           }
-          &::after {
+          .tag {
             position: absolute;
-            top: 10px;
-            left: 5px;
-            width: 6px;
-            height: 6px;
-            background-color: white;
-            content: '';
-            border-radius: 10px;
+            top: 0;
+            left: 0;
+            padding-left: 16px;
+            padding-right: 4px;
+            height: 24px;
+            color: black;
+            background: $sub-color;
+            font-weight: bolder;
+            &::before {
+              position: absolute;
+              top: -2px;
+              right: -8px;
+              width: 0;
+              height: 0;
+              content: '';
+              border-width: 14px 0px 14px 8px;
+              border-style: solid;
+              border-color: transparent transparent transparent $sub-color;
+              border-radius: 4px;
+            }
+            &::after {
+              position: absolute;
+              top: 10px;
+              left: 5px;
+              width: 6px;
+              height: 6px;
+              background-color: white;
+              content: '';
+              border-radius: 10px;
+            }
           }
         }
       }
@@ -314,11 +363,8 @@ export default {
 
 }
 
-// .list-enter, .list-leave-to {
-//   opacity: 0;
-// }
-// .list-leave-active {
-//   position: absolute !important;
-// }
+.works-list-move {
+  transition: transform 1s;
+}
 
 </style>
