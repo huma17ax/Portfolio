@@ -22,7 +22,7 @@
       </div>
       <div class="description" v-if="selectedWork">{{selectedWork.desc}}</div>
     </div>
-    <div :class="['horizon', {'clear': clearPage}]">Works</div>
+    <Horizon :class="{'clear': clearPage}">Works</Horizon>
     <!-- <transition-group name="list-complete" class="container" tag="div"> -->
     <div class="container">
       <div class="content" :style="clearStyle(idx)" v-for="(work, idx) in works" :key="work.id" @click="select(idx)">
@@ -42,13 +42,15 @@
 import worksData from '@/assets/json/works.json'
 
 import Button from '@/components/parts/Button'
+import Horizon from '@/components/parts/Horizon'
 
 import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Works",
   components: {
-    Button
+    Button,
+    Horizon
   },
   mixins: [
     pageTransition
@@ -206,22 +208,6 @@ export default {
   }
   .transparent {
     opacity: 0;
-  }
-
-  .horizon {
-    display: flex;
-    align-items: center;
-    font-size: 1.5em;
-    font-weight: bolder;
-    margin: 16px 0px;
-    transition: all 0.3s;
-    &::after {
-      content: '';
-      height: 2px;
-      margin-left: 8px;
-      background-color: #333;
-      flex-grow: 1;
-    }
   }
   
   .clear {

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div :class="['horizon', {'clear': clearPage}]">Skills</div>
+    <Horizon :class="{'clear': clearPage}">Skills</Horizon>
     <div class="content" :style="clearStyle(idx)" v-for="(skill, idx) in skills" :key="idx">
       <div class="title">{{skill.title}}</div>
       <div class="tech">
@@ -15,10 +15,15 @@
 <script>
 import skillData from '@/assets/json/skills.json'
 
+import Horizon from '@/components/parts/Horizon'
+
 import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Skills",
+  components: {
+    Horizon
+  },
   mixins: [
     pageTransition
   ],
@@ -61,22 +66,6 @@ export default {
   margin: auto;
   overflow-y: auto;
   padding-right: 8px;
-
-  .horizon {
-    display: flex;
-    align-items: center;
-    font-size: 1.5em;
-    font-weight: bolder;
-    margin: 16px 0px;
-    transition: all 0.3s;
-    &::after {
-      content: '';
-      height: 2px;
-      margin-left: 8px;
-      background-color: #333;
-      flex-grow: 1;
-    }
-  }
   
   .clear {
     opacity: 0;

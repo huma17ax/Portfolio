@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div :class="['horizon', {'clear': clearPage}]">Links</div>
+    <Horizon :class="{'clear': clearPage}">Links</Horizon>
     <span :style="clearStyle(0)"><Button class="item" @click="open('https://github.com/huma17ax')">GitHub</Button></span>
     <span :style="clearStyle(1)"><Button class="item" @click="open('https://qiita.com/huma17ax')">Qiita</Button></span>
     <span :style="clearStyle(2)"><Button class="item" @click="open('https://atcoder.jp/users/huma17')">AtCoder</Button></span>
@@ -10,13 +10,15 @@
 
 <script>
 import Button from '@/components/parts/Button'
+import Horizon from '@/components/parts/Horizon'
 
 import pageTransition from '@/mixins/PageTransition'
 
 export default {
   name: "Links",
   components: {
-    Button
+    Button,
+    Horizon
   },
   mixins: [
     pageTransition
@@ -55,23 +57,6 @@ export default {
   width: 100%;
   margin: auto;
   overflow-y: auto;
-
-  
-  .horizon {
-    display: flex;
-    align-items: center;
-    font-size: 1.5em;
-    font-weight: bolder;
-    margin: 16px 0px;
-    transition: all 0.3s;
-    &::after {
-      content: '';
-      height: 2px;
-      margin-left: 8px;
-      background-color: #333;
-      flex-grow: 1;
-    }
-  }
 
   .clear {
     opacity: 0;
