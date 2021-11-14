@@ -5,5 +5,8 @@ module.exports = {
         prependData: `@import "@/assets/scss/global.scss";` //グローバルで読みたいファイル名
       }
     }
-  }
+  },
+  outputDir: 'docs',
+  assetsDir: './',
+  publicPath: './'
 };
