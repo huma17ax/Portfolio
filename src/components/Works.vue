@@ -13,7 +13,7 @@
           <!-- 使用技術： -->
           <div class="tech">{{selectedWork.tech}}</div>
           <div>
-            <Button class="link" v-for="(url, idx) in selectedWork.link" :key="idx" @click="open(url)">
+            <Button class="link" v-for="(url, idx) in selectedWork.link" :key="idx" @click.native="open(url)">
               {{linkStr(url)}}
             </Button>
           </div>

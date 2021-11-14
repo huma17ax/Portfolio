@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <Horizon :class="{'clear': clearPage}">Links</Horizon>
-    <span :style="clearStyle(0)"><Button class="item" @click="open('https://github.com/huma17ax')">GitHub</Button></span>
-    <span :style="clearStyle(1)"><Button class="item" @click="open('https://qiita.com/huma17ax')">Qiita</Button></span>
-    <span :style="clearStyle(2)"><Button class="item" @click="open('https://atcoder.jp/users/huma17')">AtCoder</Button></span>
-    <span :style="clearStyle(3)"><Button class="item" @click="open('https://lapras.com/public/XWQGE21')">LAPRAS</Button></span>
+    <span :style="clearStyle(0)"><Button class="item" @click.native="open('https://github.com/huma17ax')">GitHub</Button></span>
+    <span :style="clearStyle(1)"><Button class="item" @click.native="open('https://qiita.com/huma17ax')">Qiita</Button></span>
+    <span :style="clearStyle(2)"><Button class="item" @click.native="open('https://atcoder.jp/users/huma17')">AtCoder</Button></span>
+    <span :style="clearStyle(3)"><Button class="item" @click.native="open('https://lapras.com/public/XWQGE21')">LAPRAS</Button></span>
   </div>
 </template>
 
